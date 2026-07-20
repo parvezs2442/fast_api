@@ -7,13 +7,28 @@ app = FastAPI()
 # def root():
 #     return {"message":"Welcome to fastAPI"}
 
+
+#id parameter
 @app.get("/products/{id}")
 def get_products(id:int):
-    products = ["Apple", "Mango", "Banana"]
-    return products[id] if products[id] else HTTPException(status_code=404, detail="No data present with given id")
+
+    return {"productsID": id}
+
+#quary parameter
+@app.get("/products")
+def products(category: str):
+    return {
+        "category":category
+    }
 
 
+@app.get("/about")
+def about():
+    return {"message":"About Page"}
 
+@app.get("/contact")
+def about():
+    return {"message":"Contact Page"}
 
 
 
